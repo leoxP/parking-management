@@ -8,7 +8,15 @@ from mysql.connector import Error
 
 
 
-connection = mysql.connect(host='localhost',user='root',password='lmaosql@101')
+
+connection = mysql.connect(
+    host='localhost',
+    user='root',
+    password='lmaosql@101',
+    port=3306,
+)
+
+mycursor = connection.cursor()
 
 
 mycursor = connection.cursor()
@@ -186,7 +194,6 @@ def EntryPoint():
             mb.showerror("Entry Error", " The Entry must have 6 digits")
         mycursor.execute("select Vehicle_Number from Customer")
         data=mycursor.fetchall()
-        
         if (Vehiclenumber,) in data:
             mb.showerror("Entry Error", " duplicate entry!!!")
         else:
@@ -268,7 +275,7 @@ def EntryPoint():
             entry_page()
             
     else:
-        
+
         mb.showerror("Full", "No parking spot available")
 
 
@@ -735,7 +742,7 @@ def log_to_mainpage():
     mainpage.deiconify()
     
 def admin_to_mainpage():
-    admin_page_1.withdraw()
+    admin_page.withdraw()
     mainpage.deiconify()
     
 def user_to_mainpage():
@@ -765,7 +772,9 @@ global mainpage
 mainpage=Tk()
 mainpage.title("Mainpage")
 mainpage.geometry("430x360")
-img = ImageTk.PhotoImage(Image.open("p.jfif"))
+
+img = ImageTk.PhotoImage(Image.open("static/p.jfif"))
+
 Label(mainpage,image=img,height="140").grid(column="5")
 Label(mainpage,text="").grid(column="5")
 Label(mainpage,text="").grid(column="5")
@@ -779,3 +788,5 @@ Label(mainpage,text="").grid(column="5")
 Button(mainpage,text="USER",font="bold",width="16",bg="black",fg="white",command=user_page).grid(column="5")
 
 Button(mainpage,text="QUIT",font="bold",width="10",bg="red",fg="white",command=quit1).grid(row="13")
+
+mainpage.mainloop()
