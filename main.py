@@ -31,7 +31,6 @@ else:
     print("PROBLEM IN CONNECTING TO THE DATABASE")
 
 
-
 def drop_car():
     try:
         mycursor.execute('DROP database CarParking')
