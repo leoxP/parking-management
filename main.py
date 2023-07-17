@@ -412,7 +412,7 @@ def _login_btn_clicked():
     
 def quit1():
     if mb.askokcancel("QUIT","You want to quit "):
-        mainpage.destroy()
+        mainpage.quit()
 
 
 def car_or_bike():
@@ -741,7 +741,7 @@ def log_to_mainpage():
     mainpage.deiconify()
     
 def admin_to_mainpage():
-    admin_page.withdraw()
+    admin_to_mainpage.withdraw()
     mainpage.deiconify()
     
 def user_to_mainpage():
